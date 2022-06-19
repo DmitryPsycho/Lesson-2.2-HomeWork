@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         yellowLight.layer.cornerRadius = yellowLight.frame.width / 2
         greenLight.layer.cornerRadius = greenLight.frame.width / 2
     
-        lightSwitchBtn.setTitle("Switch", for: .normal)
+        lightSwitchBtn.configuration = setupButton(with: "Switch")
     }
 
     @IBAction func lightSwitch() {
@@ -50,6 +50,15 @@ class ViewController: UIViewController {
             greenLight.alpha = lightIsOn
             currentLight = .red
         }
+    }
+    private func setupButton(with title: String) -> UIButton.Configuration {
+        var buttonConfiguration = UIButton.Configuration.filled()
+        buttonConfiguration.baseBackgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        buttonConfiguration.title = title
+        buttonConfiguration.buttonSize = .large
+        buttonConfiguration.cornerStyle = .large
+        buttonConfiguration.attributedTitle?.font = UIFont.systemFont(ofSize: 45)
+        return buttonConfiguration
     }
 }
 
